@@ -15,11 +15,11 @@ class Main extends Phaser.Scene {
     //Додаємо літак на сцену
     this.plane = this.physics.add.sprite(0, 0, 'plane')
     //Масштабуємо літак
-    this.plane.setScale(0.65, 0.65);
+    this.plane.setScale(1.5, 1.5);
     //Встановлюємо опорну точку літака
     this.plane.setOrigin(0, 0.5);
 
-    this.plane.body.gravity.y = 1000;
+    this.plane.body.gravity.y = 100;
     this.spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     this.score = 0;
     this.labelScore = this.add.text(20, 20, "0", {fontSize: 24, color: "black"});
@@ -37,7 +37,7 @@ class Main extends Phaser.Scene {
     // While preload() and create() run only once at the start of the game, update() runs constantly.
     update() {   
           
-        if (this.plane.y < 0 || this.plane.y > 490) {
+        if (this.plane.y < 0 || this.plane.y > 930) {
             this.scene.restart();
         }
         if (this.spaceBar.isDown) {
@@ -49,11 +49,10 @@ class Main extends Phaser.Scene {
     jump() {
         this.tweens.add({
             targets: this.plane,
-            angle: -20,
             duration: 100,
             repeat: 1
         });
-        this.plane.body.velocity.y = -350;
+        this.plane.body.velocity.y = -150;
     }
     addOnePipe(x, y) {
         var pipe = this.physics.add.sprite(x, y, 'pipe');
@@ -89,8 +88,8 @@ class Main extends Phaser.Scene {
 
 const config = {
     type: Phaser.AUTO,
-    width: 400,
-    height: 490,
+    width: 1900,
+    height: 930,
     scene: Main, // Цю сцену ми створимо на 4-му кроці
     backgroundColor: '#71c5cf',
     physics: {
