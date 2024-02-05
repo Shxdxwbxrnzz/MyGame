@@ -35,7 +35,7 @@ class Main extends Phaser.Scene {
 
     // While preload() and create() run only once at the start of the game, update() runs constantly.
     update() {
-        if (this.plane.y < 490) {
+        if (this.plane.y < 19) {
             this.plane.body.gravity.y = 1000;
         }
         if (this.spaceBar.isDown) {
